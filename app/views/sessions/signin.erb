@@ -1,0 +1,26 @@
+
+<%= form_for @user do |f| %>
+
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<%end%>
+
+<%= form_tag('/sessions', method: :post) do %>
+  <div>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <%= label_tag(:username, "Username") %>
+    <%= text_field_tag :username %>
+  </div>
+  <div>
+    <%= f.label :password %>
+    <%= f.text_field :password %>
+   <%= label_tag(:password, "Password") %>
+    <%= password_field_tag :password %>
+  </div>
+  <%= f.submit "Signup" %>
+  <%= submit_tag("Login") %>
+<% end %>
+<% end %>

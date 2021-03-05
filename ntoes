@@ -1,0 +1,229 @@
+After you displayt all recipes 
+
+In a recipe show page you will have an indiviudal recipe 
+
+you are then going to have a button to add ingredients 
+
+yotu are going to go to a nested roue for new that will have checkboxes for ingredients and a quantity number 
+
+that form will take you to a create and you will then find the recipe by the id number 
+
+then iterate over all the ingredients checked off. For each ingredient you're going to find it and then you're going to assosciate it with recipe 
+
+have a nested route show page "/reciepes/1/ingredients/4"
+
+Scope method ( for search ? )
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 10px;
+  background: #ddd;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 10px;
+  text-align: center;
+  background: #ddd;
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  background-color: #4C4646;
+  padding-left: 20px;
+  : white;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #4C4646;
+  width: 100%;
+  padding: 20px;
+  font: white;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: #4C4646;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+  
+    <% if  current_user %>
+           <div class="topnav">
+           <a href="/">Home</a>
+           <a href="/recipes">Recipes</a>
+           <a href="/recipes/new"> Create </a>
+           <a href="/rate"> Rate </a>
+         <a href="/logout"> Log out </a>
+         %= link_to "Rate a recipe", new_recipe_recipes_ingredient_path(@recipe) %>
+        <%else%>
+           <a href="/login"> Sign In </a>
+           <a href="/signup">Sign Up</a>
+          <%= button_to "Log into Google", '/auth/google_oauth2'%>
+     <%end%>
+
+ <%= form_tag(recipes_search_path, :method => "get",   
+    class: 'navbar-form navbar-left') do %>  
+  <div class="input-group">  
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+    <div class="input-group-btn">  
+      <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+    </div>  
+  </div>  
+<% end %>
+
+
+
+
+  
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>Find recipes. Add recipes. Create your own Menu.</h2>
+      <h5>sign up or log in.</h5>
+      <img src="https://www.gimmesomeoven.com/wp-content/uploads/2014/03/PB-Banana-Smoothie-5.jpg" style="height:200px;"></div>
+      <p>Peanut butter and banana Smoothie.</p>
+    </div>
+    
+      
+    </div>
+  </div>
+  
+  
+    <div class="card">
+      
+     
+     
+     <img src="https://th.bing.com/th/id/Re41d68a449c8634cb3b688cc01fc3d09?rik=21o2CL9BszDbow&riu=http%3a%2f%2fi652.photobucket.com%2falbums%2fuu244%2fBeautifulBasics%2fsidebar+title+popular+posts.png&ehk=Q2WWJxwUsZHkPuHsYs5vwjIMS9Q5ZIJVDXRBUNEoaEo%3d&risl=&pid=ImgRaw" style="height:125x;"></div>
+     <img src="https://th.bing.com/th/id/R48506926fd39fba98eff9f0b7d3187b0?rik=gJyS6eMXynB9%2bw&riu=http%3a%2f%2fsites.psu.edu%2fmxypassionblog%2fwp-content%2fuploads%2fsites%2f15853%2f2014%2f10%2fmexican-tacos-carnitas-R156435-ss.jpg&ehk=SqDHPvdQ7YbT5YTCl2UY4gt8Kpvn3IkpJxyApfxyJwQ%3d&risl=&pid=ImgRaw" style="height:200px;"></div>
+     <img src="https://assets.rebelmouse.io/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vd3d3LmJyaXQuY28vbWVkaWEtbGlicmFyeS9leUpoYkdjaU9pSklVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjkuZXlKcGJXRm5aU0k2SW1oMGRIQnpPaTh2WVhOelpYUnpMbkppYkM1dGN5OHlNVE14TXpVMU15OXZjbWxuYVc0dWFuQm5JaXdpWlhod2FYSmxjMTloZENJNk1UWXpOemcwTnpjeE5uMC4xa1VjVTdsQ3daTG1peU9nNXM5bzF5RjRxM2hwaTlERGZfT1FqUzZ2RWZZL2ltYWdlLmpwZz93aWR0aD05ODAiLCJleHBpcmVzX2F0IjoxNjMyMjU2MDM4fQ.a1ErJatAIIGE54AaZs_HR8fg-MpAhc__yTMOwcLfVlQ/img.jpg?width=2000&height=2000" style="height:200px;"></div>
+     <img src="https://easyandhealthyrecipes.com/wp-content/uploads/2019/06/8-Hawaiian-Chicken-Kabobs.jpg" style="height:200px;"></div>
+
+    <img src="https://th.bing.com/th/id/OIP.rHODgZHBTWtKDylHRb0n6wHaGu?w=200&h=182&c=7&o=5&pid=1.7" style="height:125x;"></div>
+    <img src="https://th.bing.com/th/id/OIP.KhTQ9eJzJSGddO53VV472QHaLH?w=200&h=300&c=7&o=5&pid=1.7" style="height:125x;"></div>
+
+
+     <img src="https://dinnerthendessert.com/wp-content/uploads/2020/03/Cilantro-Lime-Grilled-Chicken.jpg" style="height:200px;"></div>
+     <img src="https://th.bing.com/th/id/R4712b9ab1f33db35f3697e319157be6e?rik=G6fv2PZ4kxnbhA&riu=http%3a%2f%2fwww.saga.co.uk%2fcontentlibrary%2fsaga%2fpublishing%2fverticals%2ffood%2frecipes%2fcooking-for-the-sensitive-gut%2fshakshuka-1280.jpg&ehk=fOXtiNR2Doc%2f7xW0qQcNugPoH9Cce%2fMq%2bSQJWmLC1tE%3d&risl=&pid=ImgRaw" style="height:200px;"></div>
+     <img src="https://th.bing.com/th/id/R4380407514d02c4adc7e949f7200165d?rik=rXQQjngmmGkpmA&riu=http%3a%2f%2fdel.h-cdn.co%2fassets%2f16%2f17%2f1461690422-spring-spaghetti-aspragus-chicken.jpg&ehk=sdGEkqZ6AEjs%2fu%2bVE4xoNkwraZvZU8afGipXkBN3FZg%3d&risl=&pid=ImgRaw" style="height:200px;"></div>
+    </div>
+    <div class="card">
+      <h3></h3>
+      <p>Get started today.</p>
+    </div>
+  </div>
+</div>
+
+<div class="">
+  <h2>@MenuMixer2021</h2>
+</div>
+
+</body>
+</html>
+
+    <% if  current_user %>
+           <div class="topnav">
+           <a href="/">Home</a>
+           <a href="/recipes">Recipes</a>
+           <a href="/recipes/new"> Create </a>
+           <a href="/rate"> Rate </a>
+         <a href="/logout"> Log out </a>
+         %= link_to "Rate a recipe", new_recipe_recipes_ingredient_path(@recipe) %>
+        <%else%>
+           <a href="/login"> Sign In </a>
+           <a href="/signup">Sign Up</a>
+          <%= button_to "Log into Google", '/auth/google_oauth2'%>
+     <%end%>
+
+ <%= form_tag(recipes_search_path, :method => "get",   
+    class: 'navbar-form navbar-left') do %>  
+  <div class="input-group">  
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+    <div class="input-group-btn">  
+      <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+    </div>  
+  </div>  
+<% end %>
+</style>
+</head>
+
+</html>

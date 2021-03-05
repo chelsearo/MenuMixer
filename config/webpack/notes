@@ -1,0 +1,15 @@
+notes
+
+ <div class="form_row">
+    <label for="ingredients[">Ingredients</label>
+    <% for ingredients in Ingredients.all do %>
+      <br><%= check_box_tag 'ingredient_id[]', ingredients.id %>
+      <%= ingredients.name.humanize %>
+
+
+      <div class="search-container">
+    <form action="/recipes/search">
+      <input type="text" placeholder="Search.." name="search"%>
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>

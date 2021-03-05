@@ -1,0 +1,15 @@
+  
+<h1>Add a Rating</h1>
+<%= form_for @rating, url: recipe_ratings_path(@recipe) do |f| %>
+  <div>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
+  <div>
+    <%= f.hidden_field :recipe_id, :value => @recipe.id %>
+  </div>
+  <div>
+    <%= f.label :rating %>
+    <%= f.text_field :description %>
+  </div>
+  <%= f.submit %>
+<% end %>

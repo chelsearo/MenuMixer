@@ -1,0 +1,28 @@
+
+
+
+<p id="notice"><%= notice %></p>
+
+<div class="center">
+ <h1> <%= @recipe.title %> </h1>
+     <p> <%= @recipe.content%> </p>
+  <div class="info">
+    <% @recipe.ingredients.each do |i|%>
+    <%=i.name%>
+   <%end%>
+     
+
+
+  </div>
+<%= link_to "Delete", recipe_path(@recipe), method: "DELETE" %>
+
+<%= link_to "Create a Rating", new_recipe_rating_path(@recipe) %>
+
+
+<%= link_to "View all Ratings", recipe_ratings_path(@recipe) %>
+cxd
+
+
+
+
+

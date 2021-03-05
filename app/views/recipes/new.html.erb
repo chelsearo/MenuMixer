@@ -1,0 +1,32 @@
+<html>
+<head>
+<style>
+body { 
+  background: lightgray; 
+}
+</style>
+</head>
+<body>
+ 
+<%= form_for @recipe, url: recipes_path do |x| %>
+   <%= x.label :title %> 
+  <%= x.text_field :title %> 
+
+  <%= x.label :content %> 
+  <%= x.text_field :content %> 
+  
+  
+ 
+  -<% Ingredient.all.each do |i|%>
+   <%= x.check_box :ingredients, { multiple: true }, i.name %>
+    <%= x.label :ingredients, i.name%>
+  
+
+
+ <%end%>
+  <%= x.submit "Add Recipe" %> 
+ <%end%>
+
+  
+ 
+   

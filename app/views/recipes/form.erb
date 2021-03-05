@@ -1,0 +1,13 @@
+<%= form_for recipes_ratings_path url:url do |f| %>
+  <div>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
+  <div>
+    <%= f.hidden_field :recipe_id, :value => recipe.id %>
+  </div>
+  <div>
+    <%= f.label :rating %>
+    <%= f.number_field :rating %>
+  </div>
+  <%= f.submit %>
+<% end %>
